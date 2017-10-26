@@ -1,5 +1,5 @@
 
-const tool = require('../lib/the_cake_is_not_a_lie');
+const tool = require('../lib/one');
 
 const instance = tool();
 
