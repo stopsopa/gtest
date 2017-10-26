@@ -1,11 +1,13 @@
 
-const fn = require('../lib/the_cake_is_not_a_lie');
+const tool = require('../lib/the_cake_is_not_a_lie');
+
+const instance = tool();
 
 const test = (mnm, e) => {
 
-    const t = fn(mnm);
+    const t = instance(mnm);
 
-    it(`${mnm} - ${t}`, () =>
+    it(`${mnm} - returned: ${t}, expected: ${e}, length: ${instance.l}, iterations: ${instance.i}`, () =>
         expect(t).toBe(e))
 
 }
@@ -36,3 +38,15 @@ test('aaabbba', 1);
 test('aaabbbaab', 1);
 test('aaabbbaabb', 1);
 test('aaabbbaabbc', 1);
+test('hjfdsuiewhuifhdsuareuwiuifhdsjkafhsaifehwuirheahjfdjksajkfeuwuihfefihdsjka'.repeat(2), 2);
+test(
+    (k => {
+        k = k.substring(0, k.length - 1) + 'B';
+        return k;
+    })('hjfdsuiewhuifhdsuareuwiuifhdsjkafhsaifehwuirheahjfdjksajkfeuwuihfefihdsjka'.repeat(2)),
+    1
+);
+test('abcdefghij'.repeat(20), 20);
+test('ab'.repeat(100), 100);
+test('abcdefghij'.repeat(19) + 'abcdefghi', 1);
+test('abcdefghij'.repeat(20) + 'a', 1);
